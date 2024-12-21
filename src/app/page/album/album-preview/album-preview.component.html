@@ -1,0 +1,25 @@
+<div class="page">
+  <div class="page-content">
+    <div class="page-content-title">
+      {{ 'poster.title' | translate }}
+    </div>
+    <div class="w-full flex flex-col items-stretch gap-[12px]">
+      <button type="submit" (click)="print()">
+        {{ 'common.action.download' | translate }}
+      </button>
+      <a routerLink="/albums">
+        {{ 'common.action.goBack' | translate }}
+      </a>
+    </div>
+    @if (loading()) {
+      <div class="page-content-loader">
+        <app-spinner />
+      </div>
+    }
+  </div>
+  <div class="page-decoration">
+    @if (poster(); as poster) {
+      <app-poster-preview [poster]="poster" />
+    }
+  </div>
+</div>

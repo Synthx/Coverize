@@ -1,0 +1,28 @@
+<div
+  class="form-field"
+  [class.form-field--select]="input()._isSelect"
+>
+  <label
+    class="form-field-label"
+    [for]="input().inputId()"
+  >
+    <ng-content/>
+    @if (input().required) {
+      <span aria-hidden="true" class="form-field-label-required"> * </span>
+    }
+  </label>
+  <ng-content select="[app-form-field-input]"/>
+</div>
+@if (shouldDisplayMessage()) {
+  <div class="form-field-message">
+    @switch (displayedMessage()) {
+      @case ('hint') {
+        <ng-content select="app-form-field-hint" />
+      }
+      @case ('error') {
+        <ng-container [ngTemplateOutlet]="errorMessage()"/>
+      }
+    }
+  </div>
+}
+<ng-content select="app-form-field-error"/>

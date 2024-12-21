@@ -1,0 +1,43 @@
+{
+	"name": "poster-generator",
+	"version": "0.3.0",
+	"scripts": {
+		"ng": "ng",
+		"start": "ng serve",
+		"build": "ng build",
+		"lint": "bunx biome lint .",
+		"lint:apply": "bunx biome lint --write .",
+		"format": "bunx biome format .",
+		"format:apply": "bunx biome format --write .",
+		"deploy": "bunx firebase deploy --only hosting"
+	},
+	"private": true,
+	"dependencies": {
+		"@angular/animations": "^19.0.5",
+		"@angular/cdk": "19.0.4",
+		"@angular/common": "^19.0.5",
+		"@angular/compiler": "^19.0.5",
+		"@angular/core": "^19.0.5",
+		"@angular/fire": "19.0.0-rc.4",
+		"@angular/forms": "^19.0.5",
+		"@angular/platform-browser": "^19.0.5",
+		"@angular/platform-browser-dynamic": "^19.0.5",
+		"@angular/router": "^19.0.5",
+		"@ngx-translate/core": "^16.0.4",
+		"@ngx-translate/http-loader": "^16.0.1",
+		"extract-colors": "^4.1.1",
+		"rxjs": "~7.8.0",
+		"tslib": "^2.3.0",
+		"zone.js": "~0.15.0"
+	},
+	"devDependencies": {
+		"@angular/build": "^19.0.6",
+		"@angular/cli": "^19.0.6",
+		"@angular/compiler-cli": "^19.0.5",
+		"@biomejs/biome": "1.9.4",
+		"autoprefixer": "^10.4.20",
+		"postcss": "^8.4.49",
+		"tailwindcss": "^3.4.17",
+		"typescript": "~5.5.2"
+	}
+}

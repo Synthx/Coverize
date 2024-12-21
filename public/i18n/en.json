@@ -1,0 +1,45 @@
+{
+	"common": {
+		"action": {
+			"next": "Next",
+			"download": "Download",
+			"search": "Search",
+			"goBack": "Go back",
+			"openSpotify": "Open Spotify"
+		},
+		"control": {
+			"error": {
+				"required": "This field is required"
+			}
+		}
+	},
+	"config": {
+		"title": "Configuration",
+		"control": {
+			"clientId": "Client ID",
+			"clientSecret": "Client Secret"
+		}
+	},
+	"search": {
+		"title": "Search an album",
+		"subtitle": "Paste the album link in the field below",
+		"control": {
+			"link": "Link",
+			"error": {
+				"pattern": "This field should be a valid url"
+			}
+		},
+		"placeholder": {
+			"link": "https://open.spotify.com/album/5CEcwEyL9wMG4TygYNTFgw"
+		},
+		"hint": {
+			"link": "Accepted url format: <ul><li>spotify:album:{id}</li><li>https://open.spotify.com/album/{id}</li><li>https://open.spotify.com/intl-fr/album/{id}</li></ul>"
+		},
+		"decoration": {
+			"title": "Create your poster"
+		}
+	},
+	"poster": {
+		"title": "Review the poster"
+	}
+}

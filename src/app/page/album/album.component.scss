@@ -1,0 +1,18 @@
+.page-decoration {
+  position: relative;
+  background-image: url("/backgrounds/spotify.jpg");
+  background-position: center;
+  background-size: cover;
+
+  &::after {
+    position: absolute;
+    inset: 0;
+    content: '';
+    background: var(--yaku-color--background);
+    opacity: 0.8;
+  }
+
+  &-title {
+    z-index: 1;
+  }
+}

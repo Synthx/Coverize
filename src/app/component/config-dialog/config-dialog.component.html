@@ -1,0 +1,13 @@
+<form class="flex flex-col w-full gap-[24px]" [formGroup]="configForm" (ngSubmit)="save()">
+  <app-form-field>
+    {{ 'config.control.clientId' | translate }}
+    <input formControlName="clientId" autocomplete="off" type="text" app-form-field-input>
+  </app-form-field>
+  <app-form-field>
+    {{ 'config.control.clientSecret' | translate }}
+    <input formControlName="clientSecret" autocomplete="off" type="password" app-form-field-input>
+  </app-form-field>
+  <button type="submit" [disabled]="configForm.invalid">
+    {{ 'common.action.next' | translate }}
+  </button>
+</form>

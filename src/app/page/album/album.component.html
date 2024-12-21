@@ -1,0 +1,24 @@
+<div class="page">
+  <div class="page-content">
+    <div class="page-content-title">
+      {{ 'search.title' | translate }}
+    </div>
+    <div class="flex flex-col w-full gap-[24px]">
+      <app-form-field>
+        {{ 'search.control.link' | translate }}
+        <input autocomplete="off" type="url" app-form-field-input [formControl]="searchControl" [placeholder]="'search.placeholder.link' | translate">
+        <app-form-field-hint [innerHTML]="'search.hint.link' | translate" />
+        <app-form-field-error type="required">
+          {{ 'common.control.error.required' | translate }}
+        </app-form-field-error>
+        <app-form-field-error type="pattern">
+          {{ 'search.control.error.pattern' | translate }}
+        </app-form-field-error>
+      </app-form-field>
+      <button type="submit" app-button [disabled]="searchControl.invalid" [loading]="loading()" (click)="search()">
+        {{ 'common.action.next' | translate }}
+      </button>
+    </div>
+  </div>
+  <div class="page-decoration"></div>
+</div>

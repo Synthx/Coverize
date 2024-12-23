@@ -1,13 +1,33 @@
-<form class="flex flex-col w-full gap-[24px]" [formGroup]="configForm" (ngSubmit)="save()">
-  <app-form-field>
-    {{ 'config.control.clientId' | translate }}
-    <input formControlName="clientId" autocomplete="off" type="text" app-form-field-input>
-  </app-form-field>
-  <app-form-field>
-    {{ 'config.control.clientSecret' | translate }}
-    <input formControlName="clientSecret" autocomplete="off" type="password" app-form-field-input>
-  </app-form-field>
-  <button type="submit" [disabled]="configForm.invalid">
-    {{ 'common.action.next' | translate }}
-  </button>
+<form class="dialog" [formGroup]="configForm" (ngSubmit)="save()">
+  <div class="dialog-header">
+    <div class="dialog-header-title">
+      {{ 'config.title' | translate }}
+    </div>
+  </div>
+  <div class="dialog-content">
+    <div class="text-base">
+      {{ 'config.content' | translate }}
+    </div>
+    <a href="https://developer.spotify.com/dashboard/create" target="_blank">
+      {{ 'config.openSpotifyForDevelopers' | translate }}
+      <app-external-link-icon />
+    </a>
+    <app-form-field>
+      {{ 'config.control.clientId' | translate }}
+      <input formControlName="clientId" autocomplete="off" type="text" app-form-field-input>
+      <app-form-field-error type="required">
+        {{ 'common.control.error.required' | translate }}
+      </app-form-field-error>
+    </app-form-field>
+    <app-form-field>
+      {{ 'config.control.clientSecret' | translate }}
+      <input formControlName="clientSecret" autocomplete="off" type="password" app-form-field-input>
+      <app-form-field-error type="required">
+        {{ 'common.control.error.required' | translate }}
+      </app-form-field-error>
+    </app-form-field>
+    <button type="submit" app-button [loading]="loading()" [disabled]="configForm.invalid">
+      {{ 'common.action.save' | translate }}
+    </button>
+  </div>
 </form>

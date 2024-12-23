@@ -5,7 +5,8 @@
 			"download": "Download",
 			"search": "Search",
 			"goBack": "Go back",
-			"openSpotify": "Open Spotify"
+			"openSpotify": "Open Spotify",
+			"save": "Save"
 		},
 		"control": {
 			"error": {
@@ -14,7 +15,9 @@
 		}
 	},
 	"config": {
-		"title": "Configuration",
+		"title": "Getting started",
+		"content": "This is where the magic begins! Create en application in Spotify for developers website then copy / paste your credentials :",
+		"openSpotifyForDevelopers": "Open Spotify for developers",
 		"control": {
 			"clientId": "Client ID",
 			"clientSecret": "Client Secret"

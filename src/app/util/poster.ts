@@ -16,12 +16,12 @@ export const getPoster = (album: Album): Poster => {
 };
 
 export const getPosterTrack = (track: Track): PosterTrack => {
-	const [title, comment] = decomposeTitle(track.name);
+	const [title, extra] = decomposeTitle(track.name);
 
 	return {
 		id: track.id,
 		duration: track.duration_ms,
 		title,
-		comment,
+		extra,
 	};
 };

@@ -1,0 +1,41 @@
+.checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+
+  &-input {
+    appearance: none;
+    position: relative;
+    height: 24px;
+    width: 24px;
+    cursor: pointer;
+    background: transparent;
+    border: 2px solid var(--yaku-color--border);
+    border-radius: 4px;
+
+    &::before {
+      position: absolute;
+      transform: scale(0);
+      clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+      inset: 4px;
+      background: var(--yaku-color--background);
+      content: '';
+    }
+
+    &:checked {
+      border-color: var(--yaku-color--primary);
+      background: var(--yaku-color--primary);
+
+      &::before {
+        transform: scale(1);
+      }
+    }
+  }
+
+  &-label {
+    cursor: pointer;
+    flex: 1;
+
+    @apply text-base;
+  }
+}

@@ -1,11 +1,11 @@
 <div class="poster flex flex-col items-stretch">
   <div class="flex items-center gap-[2mm] mb-[2mm]">
     <div class="divider"></div>
-    <div class="text-right uppercase text-[6mm]">{{ poster().artist }}</div>
+    <div class="text-right uppercase text-[6mm] title">{{ poster().artist }}</div>
   </div>
   <img class="w-full" [alt]="poster().title" [src]="poster().image" />
   <div class="flex items-center mt-[2mm]">
-    @for (color of colors(); track $index) {
+    @for (color of dominantColors(); track $index) {
       <div class="flex-1 h-[4mm]" [style.background-color]="color"></div>
     }
   </div>
@@ -15,18 +15,18 @@
         @for (track of tracks(); track track.id) {
           <span>
             {{ track.title }}
-            @if (track.comment) {
-              <span class="italic text-[3.5mm]">{{ track.comment }}</span>
-            }
-            @if (!$last) {
-              •
+            @if (track.extra && !removeExtra()) {
+              <span class="text-[3.5mm] italic">{{ track.extra }}</span>
             }
           </span>
+          @if (!$last) {
+            <span> • </span>
+          }
         }
       </div>
     </div>
     <div class="flex-1 flex flex-col items-end">
-      <div class="text-right uppercase text-[15mm] leading-none">{{ poster().title }}</div>
+      <div class="text-right uppercase text-[15mm] leading-none title">{{ poster().title }}</div>
       <div class="text-right uppercase text-[6mm]">Released {{ poster().date | date }}</div>
       <div class="text-right uppercase text-[5mm] italic">{{ tracksLength() }} tracks - {{ durationInMinutes() }} minutes</div>
       <div class="flex-auto"></div>

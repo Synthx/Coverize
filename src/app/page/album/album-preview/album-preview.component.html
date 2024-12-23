@@ -1,25 +1,40 @@
 <div class="page">
-  <div class="page-content">
+  <form class="page-content" [formGroup]="configurationForm">
     <div class="page-content-title">
       {{ 'poster.title' | translate }}
     </div>
-    <div class="w-full flex flex-col items-stretch gap-[12px]">
-      <button type="submit" (click)="print()">
-        {{ 'common.action.download' | translate }}
-      </button>
-      <a routerLink="/albums">
-        {{ 'common.action.goBack' | translate }}
-      </a>
+    <div class="w-full flex flex-col items-stretch gap-[24px]">
+      <app-form-field>
+        {{ 'poster.control.theme' | translate }}
+        <select app-form-field-input formControlName="theme">
+          @for (theme of themes; track $index) {
+            <option [value]="theme">
+              {{ 'poster.theme.' + theme | translate }}
+            </option>
+          }
+        </select>
+      </app-form-field>
+      <app-checkbox formControlName="removeExtra">
+        {{ 'poster.control.removeExtra' | translate }}
+      </app-checkbox>
+      <div class="w-full flex flex-col items-stretch gap-[12px]">
+        <button type="submit" (click)="print()">
+          {{ 'common.action.download' | translate }}
+        </button>
+        <a routerLink="/albums">
+          {{ 'common.action.goBack' | translate }}
+        </a>
+      </div>
     </div>
     @if (loading()) {
       <div class="page-content-loader">
         <app-spinner />
       </div>
     }
-  </div>
+  </form>
   <div class="page-decoration">
     @if (poster(); as poster) {
-      <app-poster-preview [poster]="poster" />
+      <app-poster-preview [poster]="poster" [colors]="colors()" [removeExtra]="removeExtra()" />
     }
   </div>
 </div>

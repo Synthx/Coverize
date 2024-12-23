@@ -12,6 +12,6 @@ export type Poster = {
 export type PosterTrack = {
 	id: string;
 	title: string;
-	comment?: string;
+	extra?: string;
 	duration: number;
 };

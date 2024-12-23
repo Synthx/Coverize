@@ -43,6 +43,14 @@
 		}
 	},
 	"poster": {
-		"title": "Review the poster"
+		"title": "Review the poster",
+		"control": {
+			"theme": "Theme",
+			"removeExtra": "Remove extra information (featuring, etc...)"
+		},
+		"theme": {
+			"light": "Light",
+			"dark": "Dark"
+		}
 	}
 }

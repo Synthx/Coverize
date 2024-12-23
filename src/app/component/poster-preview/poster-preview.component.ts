@@ -1,14 +1,17 @@
 import {
+	booleanAttribute,
 	ChangeDetectionStrategy,
 	Component,
 	computed,
 	effect,
+	inject,
 	input,
 	signal,
 } from '@angular/core';
 import type { Poster } from '../../model/poster';
 import { extractColors } from 'extract-colors';
-import { DatePipe } from '@angular/common';
+import { DatePipe, DOCUMENT } from '@angular/common';
+import type { Colors } from '../../model/theme';
 
 @Component({
 	selector: 'app-poster-preview',
@@ -18,15 +21,20 @@ import { DatePipe } from '@angular/common';
 	imports: [DatePipe],
 })
 export class PosterPreviewComponent {
-	poster = input.required<Poster>();
+	#document = inject(DOCUMENT);
 
-	colors = signal<string[]>([]);
+	poster = input.required<Poster>();
+	colors = input.required<Colors>();
+	removeExtra = input(false, { transform: booleanAttribute });
+
+	dominantColors = signal<string[]>([]);
 	tracks = computed(() => this.poster().tracks);
 	tracksLength = computed(() => this.tracks().length);
 	code = computed(() => {
 		const uri = this.poster().uri;
+		const colors = this.colors();
 
-		return `https://scannables.scdn.co/uri/plain/png/f9f8f6/black/256/${uri}`;
+		return `https://scannables.scdn.co/uri/plain/png/${colors.background.replace('#', '')}/${colors.title}/660/${uri}`;
 	});
 	durationInMinutes = computed(() => {
 		const tracks = this.tracks();
@@ -39,9 +47,22 @@ export class PosterPreviewComponent {
 
 	constructor() {
 		effect(() => {
-			extractColors(this.poster().image).then((colos) => {
-				this.colors.set(colos.map((c) => c.hex));
+			const image = this.poster().image;
+
+			extractColors(image).then((colos) => {
+				this.dominantColors.set(colos.map((c) => c.hex));
 			});
+		});
+
+		effect(() => {
+			const colors = this.colors();
+
+			for (const [key, value] of Object.entries(colors)) {
+				this.#document.documentElement.style.setProperty(
+					`--yaku-poster-${key}-color`,
+					value,
+				);
+			}
 		});
 	}
 }

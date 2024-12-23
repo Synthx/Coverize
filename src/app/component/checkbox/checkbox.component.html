@@ -1,0 +1,16 @@
+<div class="checkbox" [class.checkbox--disabled]="disabled()">
+  <input
+    class="checkbox-input"
+    role="checkbox"
+    type="checkbox"
+    [attr.aria-checked]="checked()"
+    [attr.aria-disabled]="disabled()"
+    [checked]="checked()"
+    [disabled]="disabled()"
+    [id]="inputId()"
+    (change)="toggle()"
+  />
+  <label class="checkbox-label" [for]="inputId()">
+    <ng-content />
+  </label>
+</div>

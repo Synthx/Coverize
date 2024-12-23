@@ -1,7 +1,7 @@
 .poster {
   font-family: 'Bebas Neue', serif;
-  background: var(--poster-background, #f9f8f6);
-  color: var(--poster-text-color, #171918);
+  background: var(--yaku-poster-background-color, #f9f8f6);
+  color: var(--yaku-poster-text-color, #171918);
   overflow: hidden;
   position: relative;
   page-break-after: always;
@@ -14,5 +14,9 @@
 .divider {
   flex: 1;
   height: 0.75mm;
-  background: var(--poster-text-color, #171918);
+  background: var(--yaku-poster-title-color, #171918);
+}
+
+.title {
+  color: var(--yaku-poster-title-color, #000000);
 }

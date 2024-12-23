@@ -7,6 +7,7 @@
   --yaku-color--secondary: #33FFFF;
   --yaku-color--background: rgb(41, 1, 72);
   --yaku-color--surface: #400073;
+  --yaku-color--border: #818181;
   --yaku-color--text: #FFFFFF;
   --yaku-color--error: #c91123;
 }
@@ -38,28 +39,12 @@ body {
   display: flex;
 
   &-decoration {
-    position: relative;
     flex: 1;
     overflow: auto;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 24px;
-    background-image: url("/backgrounds/spotify.jpg");
-    background-position: center;
-    background-size: cover;
-
-    &::after {
-      position: absolute;
-      inset: 0;
-      content: '';
-      background: var(--yaku-color--background);
-      opacity: 0.8;
-    }
-
-    > * {
-      z-index: 1;
-    }
   }
 
   &-content {
@@ -211,14 +196,30 @@ ul {
   }
 
   &-input {
+    position: relative;
     appearance: none;
     background: transparent;
-    border: 2px solid var(--yaku-color--primary);
+    border: 2px solid var(--yaku-color--border);
     border-radius: 999px;
     padding: 12px 24px;
 
     &--invalid {
       border-color: var(--yaku-color--error);
+    }
+
+    &--select {
+      &::after {
+        position: absolute;
+        top: 50%;
+        right: 24px;
+        transform: translateY(-50%);
+        border-top: 5px solid var(--yaku-color--primary);
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        width: 0;
+        height: 0;
+        content: '';
+      }
     }
   }
 

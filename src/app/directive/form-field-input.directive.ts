@@ -24,6 +24,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 let nextId = 0;
 
 @Directive({
+	// eslint-disable-next-line @angular-eslint/directive-selector
 	selector: 'input[app-form-field-input], select[app-form-field-input]',
 	host: {
 		class: 'form-field-input',

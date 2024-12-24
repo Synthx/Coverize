@@ -7,6 +7,7 @@ import {
 import { SpinnerComponent } from '../spinner/spinner.component';
 
 @Component({
+	// eslint-disable-next-line @angular-eslint/component-selector
 	selector: 'button[app-button]',
 	templateUrl: './button.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,

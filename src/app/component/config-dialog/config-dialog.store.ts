@@ -27,7 +27,6 @@ export class ConfigDialogStore {
 					this.#configService.config = config;
 					this.#dialogService.close(ConfigDialogComponent, true);
 				},
-				error: () => {},
 			});
 	}
 }

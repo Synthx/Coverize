@@ -8,7 +8,6 @@ import { FormFieldInputDirective } from '../../directive/form-field-input.direct
 import { FormFieldErrorComponent } from '../../component/form-field/form-field-error/form-field-error.component';
 import { FormFieldHintDirective } from '../../component/form-field/form-field-hint.directive';
 import { ButtonComponent } from '../../component/button/button.component';
-import { SpinnerComponent } from '../../component/spinner/spinner.component';
 
 @Component({
 	selector: 'app-album',

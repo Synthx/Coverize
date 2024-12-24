@@ -6,10 +6,8 @@ import {
 } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
 import { inject, Injectable, Injector } from '@angular/core';
-import { KIA_TOAST_DATA } from './toast-data';
-import { KiaToastRef } from './toast-ref';
-import type { KiaToastType } from './toast.component.data';
 import { ToastComponent } from '../component/toast/toast.component';
+import { TOAST_DATA, ToastRef, ToastType } from '../model/toast';
 
 @Injectable({ providedIn: 'root' })
 export class ToastService {
@@ -17,20 +15,20 @@ export class ToastService {
 	#overlay = inject(Overlay);
 	#breakpointObserver = inject(BreakpointObserver);
 
-	#lastRef?: KiaToastRef;
+	#lastRef?: ToastRef;
 
-	open(content: string, type: KiaToastType = 'primary'): KiaToastRef {
+	open(content: string, type: ToastType = 'primary'): ToastRef {
 		this.#lastRef?.dismiss();
 
 		const overlayRef = this.createOverlayRef();
-		const toastRef = new KiaToastRef(overlayRef);
+		const toastRef = new ToastRef(overlayRef);
 		this.#lastRef = toastRef;
 
 		const injector = Injector.create({
 			parent: this.#rootInjector,
 			providers: [
-				{ provide: KiaToastRef, useValue: toastRef },
-				{ provide: KIA_TOAST_DATA, useValue: { content, type } },
+				{ provide: ToastRef, useValue: toastRef },
+				{ provide: TOAST_DATA, useValue: { content, type } },
 			],
 		});
 
@@ -55,8 +53,8 @@ export class ToastService {
 		overlayConfig.positionStrategy = this.#overlay
 			.position()
 			.global()
-			.right('15px')
-			.top('15px');
+			.right('24px')
+			.top('24px');
 
 		return this.#overlay.create(overlayConfig);
 	}

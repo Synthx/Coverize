@@ -6,7 +6,7 @@ export type Colors = Record<Color, string>;
 
 export const themeColors: Record<Theme, Colors> = {
 	light: {
-		background: '#f9f8f6',
+		background: '#ffffff',
 		title: 'black',
 		text: '#171918',
 	},

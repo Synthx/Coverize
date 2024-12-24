@@ -15,6 +15,7 @@ import { appRoutes } from './app.routes';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environment/environment';
 import { getPerformance, providePerformance } from '@angular/fire/performance';
+import { errorInterceptor } from './interceptor/error.interceptor';
 
 const httpLoaderFactory = (http: HttpClient) =>
 	new TranslateHttpLoader(http, './i18n/', '.json');
@@ -22,7 +23,7 @@ const httpLoaderFactory = (http: HttpClient) =>
 export const appConfig: ApplicationConfig = {
 	providers: [
 		provideExperimentalZonelessChangeDetection(),
-		provideHttpClient(withInterceptors([tokenInterceptor])),
+		provideHttpClient(withInterceptors([errorInterceptor, tokenInterceptor])),
 		provideRouter(appRoutes, withComponentInputBinding()),
 		provideFirebaseApp(() => initializeApp(environment.firebase)),
 		providePerformance(() => getPerformance()),

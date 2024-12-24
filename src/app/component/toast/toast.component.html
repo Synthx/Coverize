@@ -1,1 +1,11 @@
-<p>toast works!</p>
+<div class="toast toast_type--{{ data.type }}" role="alert">
+  @switch (data.type) {
+    @case ('error') {
+      <app-error-warning-icon />
+    }
+    @case ('primary') {
+      <app-information-icon />
+    }
+  }
+  <div class="toast-content">{{ data.content }}</div>
+</div>

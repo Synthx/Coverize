@@ -1,0 +1,21 @@
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #D8A3FF;
+  color: var(--yaku-color--surface);
+  padding: 16px 24px;
+  border-radius: 12px;
+  width: 350px;
+
+  &_type--error {
+    background: var(--yaku-color--error);
+    color: var(--yaku-color--text);
+  }
+
+  &-content {
+    flex: 1;
+
+    @apply text-base;
+  }
+}

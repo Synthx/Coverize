@@ -46,11 +46,16 @@
 		"title": "Review the poster",
 		"control": {
 			"theme": "Theme",
-			"removeExtra": "Remove extra information (featuring, etc...)"
+			"removeExtra": "Remove extra information (featuring, etc...)",
+			"customization": {
+				"backgroundColor": "Background color",
+				"textColorTheme": "Text color theme"
+			}
 		},
 		"theme": {
 			"light": "Light",
-			"dark": "Dark"
+			"dark": "Dark",
+			"custom": "Custom"
 		}
 	}
 }

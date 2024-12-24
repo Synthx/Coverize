@@ -1,0 +1,15 @@
+<div class="w-full flex flex-col gap-[24px]">
+  <app-form-field>
+    {{ 'poster.control.theme' | translate }}
+    <select app-form-field-input [formControl]="themeControl">
+      @for (theme of themes; track theme) {
+        <option [value]="theme">
+          {{ 'poster.theme.' + theme | translate }}
+        </option>
+      }
+    </select>
+  </app-form-field>
+  @if (theme() === 'custom') {
+    <app-custom-theme-customization [image]="image()" (colorsChanged)="handleCustomColorsChanged($event)" />
+  }
+</div>

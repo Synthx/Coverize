@@ -1,22 +1,13 @@
 <div class="page">
-  <form class="page-content" [formGroup]="configurationForm">
+  <div class="page-content">
     <div class="page-content-title">
       {{ 'poster.title' | translate }}
     </div>
     <div class="w-full flex flex-col items-stretch gap-[24px]">
-      <app-form-field>
-        {{ 'poster.control.theme' | translate }}
-        <select app-form-field-input formControlName="theme">
-          @for (theme of themes; track $index) {
-            <option [value]="theme">
-              {{ 'poster.theme.' + theme | translate }}
-            </option>
-          }
-        </select>
-      </app-form-field>
-      <app-checkbox formControlName="removeExtra">
+      <app-checkbox [formControl]="removeExtraControl">
         {{ 'poster.control.removeExtra' | translate }}
       </app-checkbox>
+      <app-theme-selector [image]="poster()?.image" (colorsChanged)="handleColorsChanged($event)" />
       <div class="w-full flex flex-col items-stretch gap-[12px]">
         <button type="submit" (click)="print()">
           {{ 'common.action.download' | translate }}
@@ -31,7 +22,7 @@
         <app-spinner />
       </div>
     }
-  </form>
+  </div>
   <div class="page-decoration">
     @if (poster(); as poster) {
       <app-poster-preview [poster]="poster" [colors]="colors()" [removeExtra]="removeExtra()" />

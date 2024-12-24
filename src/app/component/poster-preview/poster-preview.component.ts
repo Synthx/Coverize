@@ -11,7 +11,7 @@ import {
 import type { Poster } from '../../model/poster';
 import { extractColors } from 'extract-colors';
 import { DatePipe, DOCUMENT } from '@angular/common';
-import type { Colors } from '../../model/theme';
+import type { ThemeColors } from '../../model/theme';
 
 @Component({
 	selector: 'app-poster-preview',
@@ -24,7 +24,7 @@ export class PosterPreviewComponent {
 	#document = inject(DOCUMENT);
 
 	poster = input.required<Poster>();
-	colors = input.required<Colors>();
+	colors = input<ThemeColors>();
 	removeExtra = input(false, { transform: booleanAttribute });
 
 	dominantColors = signal<string[]>([]);
@@ -34,7 +34,7 @@ export class PosterPreviewComponent {
 		const uri = this.poster().uri;
 		const colors = this.colors();
 
-		return `https://scannables.scdn.co/uri/plain/png/${colors.background.replace('#', '')}/${colors.title}/660/${uri}`;
+		return `https://scannables.scdn.co/uri/plain/png/${colors?.background.replace('#', '')}/${colors?.title}/660/${uri}`;
 	});
 	durationInMinutes = computed(() => {
 		const tracks = this.tracks();
@@ -56,6 +56,7 @@ export class PosterPreviewComponent {
 
 		effect(() => {
 			const colors = this.colors();
+			if (!colors) return;
 
 			for (const [key, value] of Object.entries(colors)) {
 				this.#document.documentElement.style.setProperty(

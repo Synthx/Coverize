@@ -1,10 +1,15 @@
-export const themes = ['light', 'dark'] as const;
-export type Theme = (typeof themes)[number];
+export type PredefinedTheme = 'light' | 'dark';
+export const predefinedThemes: PredefinedTheme[] = ['light', 'dark'];
+export const defaultTheme: PredefinedTheme = 'light';
 
-export type Color = 'background' | 'title' | 'text';
-export type Colors = Record<Color, string>;
+export type Theme = PredefinedTheme | 'custom';
+export const themes: Theme[] = [...predefinedThemes, 'custom'];
 
-export const themeColors: Record<Theme, Colors> = {
+export type Color = string;
+export type ThemeAttribute = 'background' | 'title' | 'text';
+export type ThemeColors = Record<ThemeAttribute, Color>;
+
+export const predefinedThemeColors: Record<PredefinedTheme, ThemeColors> = {
 	light: {
 		background: '#ffffff',
 		title: 'black',

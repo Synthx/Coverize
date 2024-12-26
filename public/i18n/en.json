@@ -1,4 +1,5 @@
 {
+	"title": "Beau Bordel",
 	"common": {
 		"action": {
 			"next": "Next",
@@ -6,7 +7,8 @@
 			"search": "Search",
 			"goBack": "Go back",
 			"openSpotify": "Open Spotify",
-			"save": "Save"
+			"save": "Save",
+			"start": "Start"
 		},
 		"control": {
 			"error": {
@@ -14,13 +16,30 @@
 			}
 		}
 	},
-	"config": {
-		"title": "Getting started",
-		"content": "This is where the magic begins! Create en application in Spotify for developers website then copy / paste your credentials :",
-		"openSpotifyForDevelopers": "Open Spotify for developers",
-		"control": {
-			"clientId": "Client ID",
-			"clientSecret": "Client Secret"
+	"home": {
+		"action": "Create your album cover",
+		"intro": "Easy as\nHello",
+		"outro": "Should we\nbegin?",
+		"howItWorks": {
+			"title": "How it\nworks",
+			"step": {
+				"login": {
+					"title": "Link",
+					"description": "Before you can create a poster, you need to link your Spotify account"
+				},
+				"search": {
+					"title": "Find",
+					"description": "Find the album that you love & you want to posterize"
+				},
+				"customize": {
+					"title": "Customize",
+					"description": "Customize the poster to your taste by choosing a theme and colors"
+				},
+				"download": {
+					"title": "Download",
+					"description": "Download your poster (A4 format) and share it with your friends"
+				}
+			}
 		}
 	},
 	"search": {

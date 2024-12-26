@@ -1,0 +1,161 @@
+.home {
+  position: relative;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+
+  &-header {
+    position: sticky;
+    z-index: 10;
+    top: 0;
+    height: 84px;
+    background: var(--yaku-color--background);
+    border-bottom: 1px solid var(--yaku-color--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 0 24px;
+
+    &-title {
+      font-size: 24px;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+    &-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+  }
+
+  &-carousel {
+    width: 100vw;
+    max-width: 100%;
+
+    swiper-container {
+      width: 100%;
+    }
+
+    &-link {
+      width: 400px;
+
+      img {
+        max-width: unset;
+        height: auto;
+        width: 100%;
+      }
+    }
+  }
+
+  &-how-it-works {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    padding: 96px 0 48px;
+
+    &-title {
+      font-family: "Khand", serif;
+      font-size: 260px;
+      font-weight: 700;
+      line-height: 0.85;
+      letter-spacing: -10px;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    &-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 24px;
+      padding: 0 24px;
+
+      &-item {
+        border-top: 1px solid #FFFFFF;
+        border-bottom: 1px solid #FFFFFF;
+        padding: 40px 0;
+        display: flex;
+        align-items: flex-start;
+        gap: 24px;
+
+        &-number {
+          font-size: 30px;
+          font-weight: 500;
+          text-transform: uppercase;
+        }
+
+        &-content {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          font-size: 18px;
+
+          &-title {
+            font-size: 46px;
+            font-weight: 500;
+            text-transform: uppercase;
+            line-height: 1;
+          }
+        }
+      }
+    }
+  }
+
+  &-intro {
+    position: relative;
+    padding: 96px 0 48px;
+
+    &-title {
+      font-family: "Khand", serif;
+      font-size: 260px;
+      font-weight: 700;
+      letter-spacing: -10px;
+      text-transform: uppercase;
+      line-height: 0.85;
+      text-align: center;
+    }
+  }
+
+  &-outro {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+    padding: 48px 0 96px;
+
+    &-title {
+      font-family: "Khand", serif;
+      font-size: 260px;
+      font-weight: 700;
+      letter-spacing: -10px;
+      text-transform: uppercase;
+      line-height: 0.85;
+      text-align: center;
+    }
+  }
+
+  &-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    border-top: 1px solid var(--yaku-color--border);
+    padding: 40px 0;
+    margin: 0 20px;
+
+    &-copyright {
+      font-size: 22px;
+      text-transform: uppercase;
+    }
+
+    &-social {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+  }
+}

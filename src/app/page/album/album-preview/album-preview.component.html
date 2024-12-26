@@ -3,16 +3,17 @@
     <div class="page-content-title">
       {{ 'poster.title' | translate }}
     </div>
-    <div class="w-full flex flex-col items-stretch gap-[24px]">
+    <div class="album-preview">
       <app-checkbox [formControl]="removeExtraControl">
         {{ 'poster.control.removeExtra' | translate }}
       </app-checkbox>
       <app-theme-selector [image]="poster()?.image" (colorsChanged)="handleColorsChanged($event)" />
-      <div class="w-full flex flex-col items-stretch gap-[12px]">
-        <button type="submit" (click)="print()">
+      <div class="album-preview-actions">
+        <button app-button type="submit" (click)="print()">
           {{ 'common.action.download' | translate }}
+          <app-download-icon />
         </button>
-        <a routerLink="/albums">
+        <a class="link" routerLink="/albums">
           {{ 'common.action.goBack' | translate }}
         </a>
       </div>

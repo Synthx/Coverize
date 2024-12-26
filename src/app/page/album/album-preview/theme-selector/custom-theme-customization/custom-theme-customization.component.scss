@@ -1,13 +1,27 @@
-.color-button {
-  appearance: none;
-  padding: 0;
-  display: block;
-  height: 36px;
-  width: 36px;
-  border-radius: 50%;
-  border: 2px solid var(--yaku-color--border);
+.custom-theme-customization {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 
-  &.selected {
-    border-color: var(--yaku-color--primary);
+  &-color {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    flex-wrap: wrap;
+
+    &-button {
+      appearance: none;
+      padding: 0;
+      display: block;
+      height: 36px;
+      width: 36px;
+      border-radius: 50%;
+      border: 2px solid var(--yaku-color--border);
+
+      &.selected {
+        border-color: var(--yaku-color--primary);
+      }
+    }
   }
 }

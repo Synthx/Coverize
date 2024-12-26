@@ -1,16 +1,15 @@
 import type { Routes } from '@angular/router';
-import { configGuard } from './guard/config.guard';
+import { authGuard } from './guard/auth.guard';
 
 export const appRoutes: Routes = [
 	{
 		path: '',
-		canActivate: [configGuard],
+		loadComponent: () => import('./page/home/home.component'),
+	},
+	{
+		path: '',
+		canActivate: [authGuard],
 		children: [
-			{
-				path: '',
-				redirectTo: '/albums',
-				pathMatch: 'full',
-			},
 			{
 				path: 'albums',
 				loadComponent: () => import('./page/album/album.component'),

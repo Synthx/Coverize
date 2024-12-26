@@ -1,7 +1,7 @@
 .poster {
   font-family: 'Bebas Neue', serif;
-  background: var(--yaku-poster-background-color, #f9f8f6);
-  color: var(--yaku-poster-text-color, #171918);
+  background: var(--yaku-poster-background-color);
+  color: var(--yaku-poster-text-color);
   overflow: hidden;
   position: relative;
   page-break-after: always;
@@ -9,14 +9,110 @@
   height: 296mm;
   padding: 10mm 15mm;
   print-color-adjust: exact;
-}
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 
-.divider {
-  flex: 1;
-  height: 0.75mm;
-  background: var(--yaku-poster-title-color, #171918);
-}
+  &-header {
+    display: flex;
+    align-items: center;
+    gap: 2mm;
+    margin-bottom: 2mm;
 
-.title {
-  color: var(--yaku-poster-title-color, #000000);
+    &-artist {
+      color: var(--yaku-poster-title-color);
+      font-size: 6mm;
+      text-align: right;
+      text-transform: uppercase;
+    }
+  }
+
+  &-cover {
+    height: auto;
+    width: 100%;
+  }
+
+  &-color-palette {
+    display: flex;
+    align-items: center;
+    margin-top: 2mm;
+
+    &-item {
+      flex: 1;
+      height: 4mm;
+    }
+  }
+
+  &-content {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: flex-start;
+    gap: 1mm;
+    margin-top: 4mm;
+
+    &-track-list {
+      flex: 1;
+      text-align: left;
+      text-transform: uppercase;
+      font-size: 5mm;
+
+      &-extra {
+        font-size: 3.5mm;
+        font-style: italic;
+      }
+    }
+
+    &-information {
+      flex: 1;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      font-size: 5mm;
+
+      &-title {
+        color: var(--yaku-poster-title-color);
+        font-size: 15mm;
+        line-height: 1;
+        text-align: right;
+        text-transform: uppercase;
+      }
+
+      &-release-date {
+        font-size: 6mm;
+        text-align: right;
+        text-transform: uppercase;
+      }
+
+      &-duration {
+        font-style: italic;
+        text-align: right;
+        text-transform: uppercase;
+      }
+
+      &-label {
+        text-align: right;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  &-footer {
+    display: flex;
+    align-items: center;
+
+    &-code {
+      height: 12mm;
+      width: auto;
+    }
+  }
+
+  .divider {
+    flex: 1;
+    height: 0.75mm;
+    background: var(--yaku-poster-title-color);
+  }
+
+  .spacer {
+    flex: 1 1 auto;
+  }
 }

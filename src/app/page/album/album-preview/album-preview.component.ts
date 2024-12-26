@@ -16,6 +16,8 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { CheckboxComponent } from '../../../component/checkbox/checkbox.component';
 import { ThemeSelectorComponent } from './theme-selector/theme-selector.component';
 import { ThemeColors } from '../../../model/theme';
+import { ButtonComponent } from '../../../component/button/button.component';
+import { DownloadIconComponent } from '../../../component/icon/download-icon/download-icon.component';
 
 @Component({
 	selector: 'app-album-preview',
@@ -31,6 +33,8 @@ import { ThemeColors } from '../../../model/theme';
 		ReactiveFormsModule,
 		CheckboxComponent,
 		ThemeSelectorComponent,
+		ButtonComponent,
+		DownloadIconComponent,
 	],
 })
 export default class AlbumPreviewComponent implements OnInit {

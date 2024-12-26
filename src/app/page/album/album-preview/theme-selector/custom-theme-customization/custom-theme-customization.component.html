@@ -1,11 +1,11 @@
-<form class="w-full flex flex-col gap-[24px]" [formGroup]="customizationForm">
+<form class="custom-theme-customization" [formGroup]="customizationForm">
   <div class="form-field">
     <div class="form-field-label">
       {{ 'poster.control.customization.backgroundColor' | translate }}
     </div>
-    <div class="flex items-start flex-wrap gap-[12px]">
+    <div class="custom-theme-customization-color">
       @for (color of backgroundColors(); track color) {
-        <button class="color-button" type="button" [class.selected]="selectedBackgroundColor() === color" [style.background-color]="color" (click)="selectColor(color)">
+        <button class="custom-theme-customization-color-button" type="button" [class.selected]="selectedBackgroundColor() === color" [style.background-color]="color" (click)="selectColor(color)">
 
         </button>
       }

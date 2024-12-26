@@ -6,7 +6,6 @@ import { linkRegex } from '../../util/link';
 import { FormFieldComponent } from '../../component/form-field/form-field.component';
 import { FormFieldInputDirective } from '../../directive/form-field-input.directive';
 import { FormFieldErrorComponent } from '../../component/form-field/form-field-error/form-field-error.component';
-import { FormFieldHintDirective } from '../../component/form-field/form-field-hint.directive';
 import { ButtonComponent } from '../../component/button/button.component';
 
 @Component({
@@ -21,7 +20,6 @@ import { ButtonComponent } from '../../component/button/button.component';
 		FormFieldComponent,
 		FormFieldInputDirective,
 		FormFieldErrorComponent,
-		FormFieldHintDirective,
 		ButtonComponent,
 	],
 })
@@ -35,10 +33,10 @@ export default class AlbumComponent {
 		Validators.pattern(linkRegex),
 	]);
 
-	search() {
+	async search() {
 		if (this.searchControl.invalid) return;
 
 		const link = this.searchControl.getRawValue();
-		this.#store.search(link);
+		await this.#store.search(link);
 	}
 }

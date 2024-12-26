@@ -1,6 +1,5 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { SpotifyService } from '../../service/spotify.service';
-import { finalize } from 'rxjs';
 import { Router } from '@angular/router';
 import { getIdFromLink } from '../../util/link';
 
@@ -13,21 +12,21 @@ export class AlbumStore {
 
 	loading = this.#loading.asReadonly();
 
-	search(link: string) {
+	async search(link: string) {
 		this.#loading.set(true);
 
-		const id = getIdFromLink(link);
-		this.#spotifyService
-			.findAlbum(id)
-			.pipe(finalize(() => this.#loading.set(false)))
-			.subscribe({
-				next: (album) => {
-					this.#router.navigate([`/albums/${album.id}`], {
-						state: {
-							album,
-						},
-					});
+		try {
+			const id = getIdFromLink(link);
+			const album = await this.#spotifyService.findAlbum(id);
+			await this.#router.navigate([`/albums/${album.id}`], {
+				state: {
+					album,
 				},
 			});
+		} catch (error) {
+			console.error(error);
+		} finally {
+			this.#loading.set(false);
+		}
 	}
 }

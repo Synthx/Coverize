@@ -1,16 +1,41 @@
-import { inject, Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Injectable, signal } from '@angular/core';
 import { environment } from '../../environment/environment';
-import type { Album } from '../model/album';
-import type { Observable } from 'rxjs';
+import {
+	Album,
+	Scopes,
+	SpotifyApi,
+	UserProfile,
+} from '@spotify/web-api-ts-sdk';
 
 @Injectable({
 	providedIn: 'root',
 })
 export class SpotifyService {
-	#httpClient = inject(HttpClient);
+	#sdk = SpotifyApi.withUserAuthorization(
+		environment.clientId,
+		window.location.origin,
+		Scopes.userDetails,
+	);
+	#profile = signal<UserProfile | undefined>(undefined);
 
-	findAlbum(id: string): Observable<Album> {
-		return this.#httpClient.get<Album>(`${environment.url}/albums/${id}`);
+	profile = this.#profile.asReadonly();
+
+	async findAlbum(id: string): Promise<Album> {
+		return this.#sdk.albums.get(id);
+	}
+
+	async authenticated(): Promise<boolean> {
+		const response = await this.#sdk.authenticate();
+		if (response.authenticated) {
+			if (!this.#profile()) {
+				const profile = await this.#sdk.currentUser.profile();
+
+				this.#profile.set(profile);
+			}
+
+			return true;
+		}
+
+		return false;
 	}
 }

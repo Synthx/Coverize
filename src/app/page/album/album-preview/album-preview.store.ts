@@ -1,9 +1,8 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
 import { SpotifyService } from '../../../service/spotify.service';
-import type { Album } from '../../../model/album';
-import { finalize } from 'rxjs';
 import type { Poster } from '../../../model/poster';
 import { getPoster } from '../../../util/poster';
+import { Album } from '@spotify/web-api-ts-sdk';
 
 @Injectable()
 export class AlbumPreviewStore {
@@ -20,17 +19,13 @@ export class AlbumPreviewStore {
 		return getPoster(album);
 	});
 
-	init(id: string) {
+	async init(id: string) {
 		this.#loading.set(true);
 
-		this.#spotifyService
-			.findAlbum(id)
-			.pipe(finalize(() => this.#loading.set(false)))
-			.subscribe({
-				next: (album) => {
-					this.#album.set(album);
-				},
-			});
+		const album = await this.#spotifyService.findAlbum(id);
+		this.#album.set(album);
+
+		this.#loading.set(false);
 	}
 
 	print() {

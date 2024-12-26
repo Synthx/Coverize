@@ -8,7 +8,6 @@ import {
 	withInterceptors,
 } from '@angular/common/http';
 import { provideTranslateService, TranslateLoader } from '@ngx-translate/core';
-import { tokenInterceptor } from './interceptor/token.interceptor';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { appRoutes } from './app.routes';
@@ -23,7 +22,7 @@ const httpLoaderFactory = (http: HttpClient) =>
 export const appConfig: ApplicationConfig = {
 	providers: [
 		provideExperimentalZonelessChangeDetection(),
-		provideHttpClient(withInterceptors([errorInterceptor, tokenInterceptor])),
+		provideHttpClient(withInterceptors([errorInterceptor])),
 		provideRouter(appRoutes, withComponentInputBinding()),
 		provideFirebaseApp(() => initializeApp(environment.firebase)),
 		providePerformance(() => getPerformance()),

@@ -1,6 +1,6 @@
 {
 	"name": "poster-generator",
-	"version": "0.6.0",
+	"version": "0.7.0",
 	"scripts": {
 		"ng": "ng",
 		"start": "ng serve",
@@ -24,6 +24,7 @@
 		"@angular/router": "^19.0.5",
 		"@ngx-translate/core": "^16.0.4",
 		"@ngx-translate/http-loader": "^16.0.1",
+		"@spotify/web-api-ts-sdk": "^1.2.0",
 		"extract-colors": "^4.1.1",
 		"rxjs": "~7.8.0",
 		"swiper": "^11.1.15",

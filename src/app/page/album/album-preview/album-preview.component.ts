@@ -54,8 +54,8 @@ export default class AlbumPreviewComponent implements OnInit {
 		initialValue: false,
 	});
 
-	ngOnInit() {
-		this.#store.init(this.id());
+	async ngOnInit() {
+		await this.#store.init(this.id());
 	}
 
 	handleColorsChanged(colors: ThemeColors) {

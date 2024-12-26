@@ -1,7 +1,6 @@
 import type { Poster, PosterTrack } from '../model/poster';
-import type { Track } from '../model/track';
 import { decomposeTitle } from './title';
-import type { Album } from '../model/album';
+import { Album, SimplifiedTrack } from '@spotify/web-api-ts-sdk';
 
 export const getPoster = (album: Album): Poster => {
 	return {
@@ -15,7 +14,7 @@ export const getPoster = (album: Album): Poster => {
 	};
 };
 
-export const getPosterTrack = (track: Track): PosterTrack => {
+export const getPosterTrack = (track: SimplifiedTrack): PosterTrack => {
 	const [title, extra] = decomposeTitle(track.name);
 
 	return {

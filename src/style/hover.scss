@@ -1,0 +1,13 @@
+@mixin default {
+  @media (hover: hover) and (pointer: fine) {
+    &:hover:not([disabled]) {
+      @content;
+    }
+  }
+}
+
+@mixin focus {
+  &:focus-visible {
+    box-shadow: 0 0 0 2px var(--yaku-color--tiertiary);
+  }
+}

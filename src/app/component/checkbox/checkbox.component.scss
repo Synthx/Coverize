@@ -18,7 +18,7 @@
       transform: scale(0);
       clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
       inset: 4px;
-      background: var(--yaku-color--background);
+      background: var(--yaku-color--primary--contrast);
       content: '';
     }
 
@@ -35,7 +35,6 @@
   &-label {
     cursor: pointer;
     flex: 1;
-
-    @apply text-base;
+    font-size: 15px;
   }
 }

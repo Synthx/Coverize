@@ -12,6 +12,7 @@
 
     &-button {
       appearance: none;
+      cursor: pointer;
       padding: 0;
       display: block;
       height: 36px;
@@ -20,7 +21,7 @@
       border: 2px solid var(--yaku-color--border);
 
       &.selected {
-        border-color: var(--yaku-color--primary);
+        border-color: var(--yaku-color--secondary);
       }
     }
   }

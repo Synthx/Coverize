@@ -1,12 +1,21 @@
-:root {
-  --yaku-color--primary: #CBF55C;
-  --yaku-color--secondary: #33FFFF;
-  --yaku-color--background: rgb(41, 1, 72);
-  --yaku-color--surface: #400073;
-  --yaku-color--border: #818181;
-  --yaku-color--text: #FFFFFF;
-  --yaku-color--error: #c91123;
+@use 'hover';
 
+:root {
+  --yaku-color--primary: #690089;
+  --yaku-color--primary--contrast: #FFFFFF;
+  --yaku-color--secondary: #FFF56E;
+  --yaku-color--tiertiary: #00FFFF;
+  --yaku-color--error: #E92C06;
+
+  /** theme data **/
+  --yaku-color--background: #000000;
+  --yaku-color--background-elevated: #121212;
+  --yaku-color--background-elevated-highlight: #2a2a2a;
+  --yaku-color--border: #3c3c3c;
+  --yaku-color--title: #F2F2F2;
+  --yaku-color--text: #B3B3B3;
+
+  /** poster theme data **/
   --yaku-poster-background-color: #ffffff;
   --yaku-poster-title-color: #171918;
   --yaku-poster-text-color: #171918;
@@ -57,7 +66,7 @@ body {
 
   &-content {
     position: relative;
-    background: var(--yaku-color--surface);
+    background: var(--yaku-color--background-elevated);
     width: 100%;
     max-width: 540px;
     display: flex;
@@ -68,7 +77,7 @@ body {
     padding: 24px;
 
     &-title {
-      color: var(--yaku-color--primary);
+      color: var(--yaku-color--title);
       font-size: 24px;
       font-weight: 600;
       text-transform: uppercase;
@@ -77,7 +86,7 @@ body {
     &-loader {
       position: absolute;
       inset: 0;
-      background: var(--yaku-color--surface);
+      background: var(--yaku-color--background-surface);
       padding: 24px;
       display: flex;
       flex-direction: column;
@@ -95,7 +104,7 @@ body {
   cursor: pointer;
   height: 42px;
   background: var(--yaku-color--primary);
-  color: var(--yaku-color--background);
+  color: var(--yaku-color--primary--contrast);
   border-radius: 999px;
   padding: 0 24px;
   display: flex;
@@ -115,8 +124,11 @@ body {
     opacity: 0.3;
   }
 
-  &:hover:not([disabled]) {
-    background: var(--yaku-color--text);
+  @include hover.focus;
+
+  @include hover.default {
+    background: var(--yaku-color--title);
+    color: var(--yaku-color--background);
   }
 
   .button-spinner-container {
@@ -145,7 +157,7 @@ body {
   height: 42px;
   width: 42px;
   background: transparent;
-  color: var(--yaku-color--text);
+  color: var(--yaku-color--title);
   border-radius: 999px;
   display: flex;
   align-items: center;
@@ -170,18 +182,22 @@ body {
   text-transform: uppercase;
   text-decoration: none;
 
-  &.primary {
-    background: var(--yaku-color--primary);
+  @include hover.focus;
+
+  @include hover.default {
+    background: var(--yaku-color--title);
+    color: var(--yaku-color--background);
   }
 
-  &:hover:not([disabled]) {
-    background: var(--yaku-color--text);
+  &.primary {
+    background: var(--yaku-color--primary);
+    color: var(--yaku-color--primary--contrast);
   }
 }
 
 ul {
   list-style: disc;
-  padding: 0 15px;
+  padding: 0 16px;
 }
 
 .icon {
@@ -197,7 +213,8 @@ ul {
 
   &-label {
     color: var(--yaku-color--text);
-    font-size: 14px;
+    font-size: 15px;
+    font-weight: 500;
 
     &-required {
       color: var(--yaku-color--error);
@@ -206,19 +223,20 @@ ul {
 
   &-input {
     position: relative;
-    appearance: none;
-    cursor: pointer;
-    background: transparent;
-    border: 2px solid var(--yaku-color--border);
+    background: var(--yaku-color--background-elevated-highlight);
+    outline: none;
+    border: none;
     border-radius: 999px;
     padding: 18px 24px;
-    color: var(--yaku-color--text);
+    color: var(--yaku-color--title);
 
     &--invalid {
       border-color: var(--yaku-color--error);
     }
 
     &--select {
+      cursor: pointer;
+
       &::after {
         position: absolute;
         top: 50%;
@@ -239,7 +257,7 @@ ul {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    font-size: 14px;
+    font-size: 15px;
 
     &-error {
       color: var(--yaku-color--error);

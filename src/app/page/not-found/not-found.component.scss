@@ -1,4 +1,6 @@
-@use "mixin";
+@use "layout";
+@use "gradient";
+@use "text";
 
 .not-found {
   height: 100%;
@@ -11,6 +13,7 @@
   padding: 24px;
 
   &-title {
+    @include text.gradient(gradient.$tertiary);
     font-size: 180px;
     font-weight: 700;
     line-height: 0.85;
@@ -18,7 +21,7 @@
     text-align: center;
     text-transform: uppercase;
 
-    @include mixin.is-mobile {
+    @include layout.is-mobile {
       font-size: 80px;
     }
   }

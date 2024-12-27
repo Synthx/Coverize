@@ -1,7 +1,7 @@
 .home-menu {
   height: 100%;
   width: 100%;
-  background: var(--yaku-color--surface);
+  background: var(--yaku-color--background-elevated);
   display: flex;
   flex-direction: column;
 
@@ -24,7 +24,7 @@
     &-item {
       appearance: none;
       background: transparent;
-      color: var(--yaku-color--text);
+      color: var(--yaku-color--title);
       display: flex;
       align-items: center;
       gap: 24px;

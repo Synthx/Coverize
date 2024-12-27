@@ -1,4 +1,6 @@
-@use "mixin";
+@use "layout";
+@use "gradient";
+@use "text";
 
 .home {
   position: relative;
@@ -21,6 +23,7 @@
     padding: 0 24px;
 
     &-title {
+      color: var(--yaku-color--title);
       font-size: 24px;
       font-weight: 500;
       text-transform: uppercase;
@@ -44,7 +47,7 @@
     &-link {
       width: 400px;
 
-      @include mixin.is-mobile {
+      @include layout.is-mobile {
         width: 300px;
       }
 
@@ -63,7 +66,7 @@
     padding: 96px 0 48px;
 
     &-title {
-      font-family: "Khand", serif;
+      @include text.gradient(gradient.$secondary);
       font-size: 260px;
       font-weight: 700;
       line-height: 0.85;
@@ -72,7 +75,7 @@
       text-align: center;
       overflow: hidden;
 
-      @include mixin.is-mobile {
+      @include layout.is-mobile {
         font-size: 120px;
       }
     }
@@ -83,7 +86,7 @@
       column-gap: 24px;
       padding: 0 24px;
 
-      @include mixin.is-mobile {
+      @include layout.is-mobile {
         grid-template-columns: repeat(1, 1fr);
       }
 
@@ -96,8 +99,9 @@
         gap: 24px;
 
         &-number {
+          color: var(--yaku-color--title);
           font-size: 30px;
-          font-weight: 500;
+          font-weight: 600;
           text-transform: uppercase;
         }
 
@@ -109,6 +113,7 @@
           font-size: 18px;
 
           &-title {
+            color: var(--yaku-color--title);
             font-size: 46px;
             font-weight: 500;
             text-transform: uppercase;
@@ -124,7 +129,7 @@
     padding: 96px 0 48px;
 
     &-title {
-      font-family: "Khand", serif;
+      @include text.gradient(gradient.$primary);
       font-size: 260px;
       font-weight: 700;
       letter-spacing: -6px;
@@ -133,7 +138,7 @@
       text-align: center;
       overflow: hidden;
 
-      @include mixin.is-mobile {
+      @include layout.is-mobile {
         font-size: 120px;
       }
     }
@@ -148,7 +153,7 @@
     padding: 48px 0 96px;
 
     &-title {
-      font-family: "Khand", serif;
+      @include text.gradient(gradient.$tertiary);
       font-size: 260px;
       font-weight: 700;
       letter-spacing: -6px;
@@ -157,7 +162,7 @@
       text-align: center;
       overflow: hidden;
 
-      @include mixin.is-mobile {
+      @include layout.is-mobile {
         font-size: 120px;
       }
     }
@@ -168,6 +173,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 24px;
+    color: var(--yaku-color--title);
     border-top: 1px solid var(--yaku-color--border);
     padding: 24px 0;
     margin: 0 24px;

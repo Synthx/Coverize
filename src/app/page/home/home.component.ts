@@ -6,30 +6,19 @@ import {
 } from '@angular/core';
 import { TranslatePipe } from '@ngx-translate/core';
 import { RouterLink } from '@angular/router';
-import { GithubIconComponent } from '../../component/icon/github-icon/github-icon.component';
-import { SpotifyIconComponent } from '../../component/icon/spotify-icon/spotify-icon.component';
-import { DiscIconComponent } from '../../component/icon/disc-icon/disc-icon.component';
 import { DecimalPipe } from '@angular/common';
 import { DialogService } from '../../service/dialog.service';
 import { HomeMenuComponent } from './home-menu/home-menu.component';
 import { LayoutService } from '../../service/layout.service';
-import { MenuIconComponent } from '../../component/icon/menu-icon/menu-icon.component';
 import { environment } from '../../../environment/environment';
+import { IconComponent } from '../../component/icon/icon.component';
 
 @Component({
 	selector: 'app-home',
 	templateUrl: './home.component.html',
 	styleUrl: './home.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [
-		TranslatePipe,
-		RouterLink,
-		GithubIconComponent,
-		SpotifyIconComponent,
-		DiscIconComponent,
-		DecimalPipe,
-		MenuIconComponent,
-	],
+	imports: [TranslatePipe, RouterLink, DecimalPipe, IconComponent],
 	schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export default class HomeComponent {

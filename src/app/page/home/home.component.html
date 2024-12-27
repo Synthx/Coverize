@@ -6,16 +6,16 @@
     <div class="home-header-actions">
       @if (isHandset()) {
         <button class="icon-button" type="button" (click)="openMenu()">
-          <app-menu-icon />
+          <app-icon name="menu" />
         </button>
       } @else {
         <a class="link" [href]="environment.externalUrl.spotify" target="_blank">
           {{ 'common.action.openSpotify' | translate }}
-          <app-spotify-icon />
+          <app-icon name="spotify" />
         </a>
         <a class="link primary" routerLink="/albums">
           {{ 'home.action' | translate }}
-          <app-disc-icon />
+          <app-icon name="disc" />
         </a>
       }
     </div>
@@ -55,7 +55,7 @@
     </h2>
     <a class="link primary" routerLink="/albums">
       {{ 'home.action' | translate }}
-      <app-disc-icon />
+      <app-icon name="disc" />
     </a>
   </section>
   <section class="home-footer">
@@ -64,7 +64,7 @@
     </div>
     <div class="home-footer-social">
       <a class="icon-button" [href]="environment.externalUrl.github" target="_blank">
-        <app-github-icon/>
+        <app-icon name="github" />
       </a>
     </div>
   </section>

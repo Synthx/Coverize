@@ -17,7 +17,7 @@ import { CheckboxComponent } from '../../../component/checkbox/checkbox.componen
 import { ThemeSelectorComponent } from './theme-selector/theme-selector.component';
 import { ThemeColors } from '../../../model/theme';
 import { ButtonComponent } from '../../../component/button/button.component';
-import { DownloadIconComponent } from '../../../component/icon/download-icon/download-icon.component';
+import { IconComponent } from '../../../component/icon/icon.component';
 
 @Component({
 	selector: 'app-album-preview',
@@ -34,7 +34,7 @@ import { DownloadIconComponent } from '../../../component/icon/download-icon/dow
 		CheckboxComponent,
 		ThemeSelectorComponent,
 		ButtonComponent,
-		DownloadIconComponent,
+		IconComponent,
 	],
 })
 export default class AlbumPreviewComponent implements OnInit {

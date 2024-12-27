@@ -1,10 +1,10 @@
 <div class="toast toast_type--{{ data.type }}" role="alert">
   @switch (data.type) {
     @case ('error') {
-      <app-error-warning-icon />
+      <app-icon name="spotify" />
     }
     @case ('primary') {
-      <app-information-icon />
+      <app-icon name="information" />
     }
   }
   <div class="toast-content">{{ data.content }}</div>

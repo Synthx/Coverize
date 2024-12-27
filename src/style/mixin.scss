@@ -1,0 +1,17 @@
+@mixin is-mobile {
+  @media screen and (max-width: 599.98px) and (orientation: portrait) {
+    @content;
+  }
+}
+
+@mixin is-tablet {
+  @media screen and (min-width: 600px) and (max-width: 839.98px) and (orientation: portrait), (min-width: 960px) and (max-width: 1279.98px) and (orientation: landscape) {
+    @content;
+  }
+}
+
+@mixin is-desktop {
+  @media screen and (min-width: 840px) and (orientation: portrait), (min-width: 1280px) and (orientation: landscape) {
+    @content;
+  }
+}

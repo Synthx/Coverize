@@ -2,6 +2,7 @@ import {
 	ChangeDetectionStrategy,
 	Component,
 	CUSTOM_ELEMENTS_SCHEMA,
+	inject,
 } from '@angular/core';
 import { TranslatePipe } from '@ngx-translate/core';
 import { RouterLink } from '@angular/router';
@@ -9,6 +10,11 @@ import { GithubIconComponent } from '../../component/icon/github-icon/github-ico
 import { SpotifyIconComponent } from '../../component/icon/spotify-icon/spotify-icon.component';
 import { DiscIconComponent } from '../../component/icon/disc-icon/disc-icon.component';
 import { DecimalPipe } from '@angular/common';
+import { DialogService } from '../../service/dialog.service';
+import { HomeMenuComponent } from './home-menu/home-menu.component';
+import { LayoutService } from '../../service/layout.service';
+import { MenuIconComponent } from '../../component/icon/menu-icon/menu-icon.component';
+import { environment } from '../../../environment/environment';
 
 @Component({
 	selector: 'app-home',
@@ -22,10 +28,17 @@ import { DecimalPipe } from '@angular/common';
 		SpotifyIconComponent,
 		DiscIconComponent,
 		DecimalPipe,
+		MenuIconComponent,
 	],
 	schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export default class HomeComponent {
+	#dialogService = inject(DialogService);
+	#layoutService = inject(LayoutService);
+
+	isHandset = this.#layoutService.isHandset;
+
+	environment = environment;
 	date = new Date();
 	posters = [
 		'fave',
@@ -56,4 +69,8 @@ export default class HomeComponent {
 			descriptionKey: 'home.howItWorks.step.download.description',
 		},
 	];
+
+	openMenu() {
+		this.#dialogService.openFullscreen(HomeMenuComponent);
+	}
 }

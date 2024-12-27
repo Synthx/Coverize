@@ -1,27 +1,50 @@
-# PosterGenerator
+# Coverize
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.2.
+Generate a poster for your favorite album!
 
-## Development server
+Enter a (valid) Spotify album URL, then download a poster!
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Examples
 
-## Code scaffolding
+<p float="center">
+  <img src="public/posters/love-sux.png" width="49%" />
+  <img src="public/posters/ciel.png" width="49%" />
+</p>
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+---
 
-## Build
+## Features
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Spotify authentication
+- Poster generation
+- Poster theme mode customization (dark, light, custom)
 
-## Running unit tests
+### Ideas
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- More languages (français, baguette)
+- More format (A1, A2, etc...)
+- More templates
+- Better album search
+- Custom color background
+- Mobile support
 
-## Running end-to-end tests
+### Known issues
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+---
 
-## Further help
+## Running locally
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+1. Clone the repository
+2. Install dependencies by running:
+
+  ```shell
+    bun install
+  ```
+   
+3. Run the app by running:
+
+  ```shell
+    bun start
+  ```
+
+And voila!

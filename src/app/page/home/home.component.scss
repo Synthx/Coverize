@@ -1,3 +1,5 @@
+@use "mixin";
+
 .home {
   position: relative;
   flex: 1 1 auto;
@@ -42,6 +44,10 @@
     &-link {
       width: 400px;
 
+      @include mixin.is-mobile {
+        width: 300px;
+      }
+
       img {
         max-width: unset;
         height: auto;
@@ -61,9 +67,14 @@
       font-size: 260px;
       font-weight: 700;
       line-height: 0.85;
-      letter-spacing: -10px;
+      letter-spacing: -6px;
       text-transform: uppercase;
       text-align: center;
+      overflow: hidden;
+
+      @include mixin.is-mobile {
+        font-size: 120px;
+      }
     }
 
     &-grid {
@@ -71,6 +82,10 @@
       grid-template-columns: repeat(2, 1fr);
       column-gap: 24px;
       padding: 0 24px;
+
+      @include mixin.is-mobile {
+        grid-template-columns: repeat(1, 1fr);
+      }
 
       &-item {
         border-top: 1px solid #FFFFFF;
@@ -112,10 +127,15 @@
       font-family: "Khand", serif;
       font-size: 260px;
       font-weight: 700;
-      letter-spacing: -10px;
+      letter-spacing: -6px;
       text-transform: uppercase;
       line-height: 0.85;
       text-align: center;
+      overflow: hidden;
+
+      @include mixin.is-mobile {
+        font-size: 120px;
+      }
     }
   }
 
@@ -131,10 +151,15 @@
       font-family: "Khand", serif;
       font-size: 260px;
       font-weight: 700;
-      letter-spacing: -10px;
+      letter-spacing: -6px;
       text-transform: uppercase;
       line-height: 0.85;
       text-align: center;
+      overflow: hidden;
+
+      @include mixin.is-mobile {
+        font-size: 120px;
+      }
     }
   }
 
@@ -144,8 +169,8 @@
     justify-content: space-between;
     gap: 24px;
     border-top: 1px solid var(--yaku-color--border);
-    padding: 40px 0;
-    margin: 0 20px;
+    padding: 24px 0;
+    margin: 0 24px;
 
     &-copyright {
       font-size: 22px;

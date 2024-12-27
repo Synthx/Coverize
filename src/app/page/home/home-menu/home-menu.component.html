@@ -1,0 +1,32 @@
+<div class="home-menu">
+  <div class="home-menu-header">
+    <button class="icon-button" type="button" (click)="close()">
+      <app-close-icon/>
+    </button>
+  </div>
+  <div class="home-menu-navigation">
+    <a class="home-menu-navigation-item" routerLink="/albums">
+      <div class="home-menu-navigation-item-title">
+        <app-disc-icon/>
+        {{ 'home.action' | translate }}
+      </div>
+    </a>
+    <a class="home-menu-navigation-item" [href]="environment.externalUrl.spotify" target="_blank">
+      <div class="home-menu-navigation-item-title">
+        <app-spotify-icon/>
+        {{ 'common.action.openSpotify' | translate }}
+      </div>
+      <app-external-link-icon />
+    </a>
+    <a class="home-menu-navigation-item" [href]="environment.externalUrl.github" target="_blank">
+      <div class="home-menu-navigation-item-title">
+        <app-github-icon/>
+        {{ 'home.openGithub' | translate }}
+      </div>
+      <app-external-link-icon />
+    </a>
+  </div>
+  <div class="home-menu-footer">
+    {{ 'version' | translate:{ version: environment.version } }}
+  </div>
+</div>

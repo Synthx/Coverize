@@ -1,6 +1,12 @@
+import * as packageJson from '../../package.json';
+
 export const environment = {
-	url: 'https://api.spotify.com/v1',
+	version: packageJson.version,
 	clientId: 'df2b8a1d2ade46ec99c4bc59953d929e',
+	externalUrl: {
+		github: 'https://github.com/Synthx/Coverize',
+		spotify: 'https://open.spotify.com',
+	},
 	firebase: {
 		apiKey: 'AIzaSyCOGajiH-oXnbf8p8ZW8evdwNBb83J-QBE',
 		authDomain: 'yaku-12794.firebaseapp.com',

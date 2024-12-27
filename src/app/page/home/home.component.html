@@ -4,14 +4,20 @@
       {{ 'title' | translate }}
     </h1>
     <div class="home-header-actions">
-      <a class="link" href="https://open.spotify.com" target="_blank">
-        {{ 'common.action.openSpotify' | translate }}
-        <app-spotify-icon />
-      </a>
-      <a class="link primary" routerLink="/albums">
-        {{ 'home.action' | translate }}
-        <app-disc-icon />
-      </a>
+      @if (isHandset()) {
+        <button class="icon-button" type="button" (click)="openMenu()">
+          <app-menu-icon />
+        </button>
+      } @else {
+        <a class="link" [href]="environment.externalUrl.spotify" target="_blank">
+          {{ 'common.action.openSpotify' | translate }}
+          <app-spotify-icon />
+        </a>
+        <a class="link primary" routerLink="/albums">
+          {{ 'home.action' | translate }}
+          <app-disc-icon />
+        </a>
+      }
     </div>
   </section>
   <section class="home-intro">
@@ -19,7 +25,7 @@
     </h2>
   </section>
   <section class="home-carousel">
-    <swiper-container centered-slides="true" initial-slide="4" mousewheel="true" space-between="30" slides-per-view="auto">
+    <swiper-container centered-slides="true" initial-slide="3" mousewheel="true" space-between="24" slides-per-view="auto">
       @for (poster of posters; track $index) {
         <swiper-slide class="home-carousel-link">
           <img src="posters/{{ poster }}.png" alt="From Zero">
@@ -57,7 +63,7 @@
       ©{{ date.getFullYear() }} {{ 'title' | translate }}
     </div>
     <div class="home-footer-social">
-      <a target="_blank">
+      <a class="icon-button" [href]="environment.externalUrl.github" target="_blank">
         <app-github-icon/>
       </a>
     </div>

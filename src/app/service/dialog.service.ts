@@ -2,7 +2,6 @@ import { Dialog, type DialogConfig, type DialogRef } from '@angular/cdk/dialog';
 import type { ComponentType } from '@angular/cdk/overlay';
 import { inject, Injectable, reflectComponentType } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import type { Observable } from 'rxjs';
 
 @Injectable({
 	providedIn: 'root',
@@ -45,11 +44,21 @@ export class DialogService {
 		});
 	}
 
-	open$<R = unknown, D = unknown, C = unknown>(
+	openFullscreen<R = unknown, D = unknown, C = unknown>(
 		component: ComponentType<C>,
 		config?: DialogConfig<D, DialogRef<R, C>>,
-	): Observable<R | undefined> {
-		return this.open(component, config).closed;
+	): DialogRef<R, C> {
+		const defaultConfig: DialogConfig<D, DialogRef<R, C>> = {
+			height: '100%',
+			maxHeight: '100%',
+			width: '100%',
+			maxWidth: '100%',
+		};
+
+		return this._createRef<R, D, C>(component, {
+			...defaultConfig,
+			...config,
+		});
 	}
 
 	close<R = unknown, C = unknown>(
@@ -63,9 +72,5 @@ export class DialogService {
 
 		const dialogRef = this.#dialog.getDialogById(mirror.selector);
 		dialogRef?.close(result);
-	}
-
-	closeAll(): void {
-		this.#dialog.closeAll();
 	}
 }

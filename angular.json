@@ -34,7 +34,10 @@
 							}
 						],
 						"styles": ["src/styles.scss"],
-						"scripts": []
+						"scripts": [],
+						"stylePreprocessorOptions": {
+							"includePaths": ["src/style"]
+						}
 					},
 					"configurations": {
 						"production": {
@@ -82,6 +85,13 @@
 					}
 				}
 			}
+		}
+	},
+	"schematics": {
+		"@schematics/angular:component": {
+			"changeDetection": "OnPush",
+			"skipTests": true,
+			"style": "scss"
 		}
 	}
 }

@@ -137,6 +137,21 @@ body {
   }
 }
 
+.icon-button {
+  position: relative;
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  height: 42px;
+  width: 42px;
+  background: transparent;
+  color: var(--yaku-color--text);
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .link {
   appearance: none;
   border: none;

@@ -1,5 +1,6 @@
 {
-	"title": "Beau Bordel",
+	"title": "Coverize",
+	"version": "Version {{version}}",
 	"common": {
 		"action": {
 			"next": "Next",
@@ -18,10 +19,11 @@
 	},
 	"home": {
 		"action": "Create your album cover",
-		"intro": "Easy as\nHello",
-		"outro": "Should we\nbegin?",
+		"openGithub": "View source code",
+		"intro": "Easy as<br />1-2-3",
+		"outro": "Should we<br />begin?",
 		"howItWorks": {
-			"title": "How it\nworks",
+			"title": "How it<br />works",
 			"step": {
 				"login": {
 					"title": "Link",

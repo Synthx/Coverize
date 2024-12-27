@@ -44,6 +44,11 @@
 			}
 		}
 	},
+	"notFound": {
+		"title": "Oops! Page not found!",
+		"content": "The page you're looking for does not exist.",
+		"action": "Back to home"
+	},
 	"search": {
 		"title": "Search an album",
 		"subtitle": "Paste the album link in the field below",

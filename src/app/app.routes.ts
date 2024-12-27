@@ -21,4 +21,8 @@ export const appRoutes: Routes = [
 			},
 		],
 	},
+	{
+		path: '**',
+		loadComponent: () => import('./page/not-found/not-found.component'),
+	},
 ];

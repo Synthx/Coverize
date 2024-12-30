@@ -1,15 +1,11 @@
 import {
 	ChangeDetectionStrategy,
 	Component,
-	effect,
+	computed,
 	inject,
-	input,
-	output,
-	signal,
 } from '@angular/core';
-import { extractColors } from 'extract-colors';
 import {
-	ThemeColors,
+	Color,
 	defaultTheme,
 	predefinedThemeColors,
 	predefinedThemes,
@@ -19,6 +15,7 @@ import { FormFieldComponent } from '../../../../../component/form-field/form-fie
 import { TranslatePipe } from '@ngx-translate/core';
 import { FormFieldInputDirective } from '../../../../../directive/form-field-input.directive';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
+import { AlbumPreviewStore } from '../../album-preview.store';
 
 const defaultBackgroundColors = Object.values(predefinedThemeColors).map(
 	(c) => c.background,
@@ -38,12 +35,14 @@ const defaultBackgroundColors = Object.values(predefinedThemeColors).map(
 })
 export class CustomThemeCustomizationComponent {
 	#formBuilder = inject(FormBuilder);
+	#store = inject(AlbumPreviewStore);
 
-	image = input<string>();
+	backgroundColors = computed<Color[]>(() => {
+		const poster = this.#store.poster();
+		const colors = poster?.colors ?? [];
 
-	colorsChanged = output<ThemeColors>();
-
-	backgroundColors = signal<string[]>(defaultBackgroundColors);
+		return [...defaultBackgroundColors, ...colors];
+	});
 
 	predefinedThemes = predefinedThemes;
 	customizationForm = this.#formBuilder.nonNullable.group({
@@ -56,30 +55,15 @@ export class CustomThemeCustomizationComponent {
 	);
 
 	constructor() {
-		effect(() => {
-			const image = this.image();
-			if (!image) return;
-
-			extractColors(image).then((colors) => {
-				const backgroundColors = colors.map((c) => c.hex);
-
-				this.backgroundColors.set([
-					...defaultBackgroundColors,
-					...backgroundColors,
-				]);
-			});
-		});
-
 		this.customizationForm.valueChanges
 			.pipe(takeUntilDestroyed())
 			.subscribe(({ backgroundColor, textColorTheme }) => {
 				const theme = textColorTheme ?? 'light';
 
-				this.colorsChanged.emit({
+				this.#store.setThemeColors({
+					...predefinedThemeColors[theme],
 					background:
 						backgroundColor ?? predefinedThemeColors[theme].background,
-					title: predefinedThemeColors[theme].title,
-					text: predefinedThemeColors[theme].text,
 				});
 			});
 	}

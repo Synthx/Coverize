@@ -10,17 +10,21 @@
   max-width: 100%;
 
   &-header {
-    position: sticky;
-    z-index: 10;
-    top: 0;
     height: 84px;
-    background: var(--yaku-color--background);
-    border-bottom: 1px solid var(--yaku-color--border);
+    background: var(--yaku-color--background-elevated);
+    border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 24px;
     padding: 0 24px;
+
+    &-wrapper {
+      position: sticky;
+      z-index: 10;
+      top: 0;
+      padding: 24px;
+    }
 
     &-title {
       color: var(--yaku-color--title);
@@ -83,7 +87,7 @@
     &-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      column-gap: 24px;
+      gap: 24px;
       padding: 0 24px;
 
       @include layout.is-mobile {
@@ -91,9 +95,9 @@
       }
 
       &-item {
-        border-top: 1px solid #FFFFFF;
-        border-bottom: 1px solid #FFFFFF;
-        padding: 40px 0;
+        background: var(--yaku-color--background-elevated);
+        border-radius: 8px;
+        padding: 40px;
         display: flex;
         align-items: flex-start;
         gap: 24px;
@@ -174,9 +178,10 @@
     justify-content: space-between;
     gap: 24px;
     color: var(--yaku-color--title);
-    border-top: 1px solid var(--yaku-color--border);
-    padding: 24px 0;
-    margin: 0 24px;
+    background: var(--yaku-color--background-elevated);
+    border-radius: 8px;
+    padding: 24px;
+    margin: 0 24px 24px;
 
     &-copyright {
       font-size: 22px;

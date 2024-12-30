@@ -1,25 +1,27 @@
 <div class="home">
-  <section class="home-header">
-    <h1 class="home-header-title">
-      {{ 'title' | translate }}
-    </h1>
-    <div class="home-header-actions">
-      @if (isHandset()) {
-        <button class="icon-button" type="button" (click)="openMenu()">
-          <app-icon name="menu" />
-        </button>
-      } @else {
-        <a class="link" [href]="environment.externalUrl.spotify" target="_blank">
-          {{ 'common.action.openSpotify' | translate }}
-          <app-icon name="spotify" />
-        </a>
-        <a class="link primary" routerLink="/albums">
-          {{ 'home.action' | translate }}
-          <app-icon name="disc" />
-        </a>
-      }
-    </div>
-  </section>
+  <div class="home-header-wrapper">
+    <section class="home-header">
+      <h1 class="home-header-title">
+        {{ 'title' | translate }}
+      </h1>
+      <div class="home-header-actions">
+        @if (isHandset()) {
+          <button class="icon-button" type="button" (click)="openMenu()">
+            <app-icon name="menu" />
+          </button>
+        } @else {
+          <a class="link" [href]="environment.externalUrl.spotify" target="_blank">
+            {{ 'common.action.openSpotify' | translate }}
+            <app-icon name="spotify" />
+          </a>
+          <a class="link primary" routerLink="/albums">
+            {{ 'home.action' | translate }}
+            <app-icon name="disc" />
+          </a>
+        }
+      </div>
+    </section>
+  </div>
   <section class="home-intro">
     <h2 class="home-intro-title" [innerHTML]="'home.intro' | translate">
     </h2>

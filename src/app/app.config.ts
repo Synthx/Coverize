@@ -15,6 +15,7 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environment/environment';
 import { getPerformance, providePerformance } from '@angular/fire/performance';
 import { errorInterceptor } from './interceptor/error.interceptor';
+import { DatePipe } from '@angular/common';
 
 const httpLoaderFactory = (http: HttpClient) =>
 	new TranslateHttpLoader(http, './i18n/', '.json');
@@ -34,5 +35,6 @@ export const appConfig: ApplicationConfig = {
 				deps: [HttpClient],
 			},
 		}),
+		DatePipe,
 	],
 };

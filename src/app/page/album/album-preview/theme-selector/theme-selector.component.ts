@@ -1,19 +1,14 @@
 import {
 	ChangeDetectionStrategy,
 	Component,
-	computed,
 	effect,
 	inject,
-	input,
-	output,
-	signal,
 } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import {
 	defaultTheme,
 	predefinedThemeColors,
 	Theme,
-	ThemeColors,
 	themes,
 } from '../../../../model/theme';
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -21,6 +16,7 @@ import { FormFieldComponent } from '../../../../component/form-field/form-field.
 import { FormFieldInputDirective } from '../../../../directive/form-field-input.directive';
 import { TranslatePipe } from '@ngx-translate/core';
 import { CustomThemeCustomizationComponent } from './custom-theme-customization/custom-theme-customization.component';
+import { AlbumPreviewStore } from '../album-preview.store';
 
 @Component({
 	selector: 'app-theme-selector',
@@ -37,38 +33,24 @@ import { CustomThemeCustomizationComponent } from './custom-theme-customization/
 })
 export class ThemeSelectorComponent {
 	#formBuilder = inject(FormBuilder);
-
-	image = input<string>();
-
-	colorsChanged = output<ThemeColors>();
+	#store = inject(AlbumPreviewStore);
 
 	themes = themes;
-	themeControl = this.#formBuilder.nonNullable.control(defaultTheme as Theme);
-
-	customColors = signal<ThemeColors | undefined>(undefined);
+	themeControl = this.#formBuilder.nonNullable.control<Theme>(defaultTheme);
 
 	theme = toSignal(this.themeControl.valueChanges, {
 		initialValue: defaultTheme,
 	});
-	colors = computed(() => {
-		const theme = this.theme();
-		if (theme === 'custom') {
-			return this.customColors();
-		}
-
-		return predefinedThemeColors[theme];
-	});
 
 	constructor() {
 		effect(() => {
-			const colors = this.colors();
-			if (!colors) return;
+			const theme = this.theme();
+			if (theme === 'custom') {
+				return;
+			}
 
-			this.colorsChanged.emit(colors);
+			const themeColors = predefinedThemeColors[theme];
+			this.#store.setThemeColors(themeColors);
 		});
-	}
-
-	handleCustomColorsChanged(colors: ThemeColors) {
-		this.customColors.set(colors);
 	}
 }

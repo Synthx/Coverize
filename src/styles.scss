@@ -1,7 +1,7 @@
 @use 'hover';
 
 :root {
-  --yaku-color--primary: #690089;
+  --yaku-color--primary: #5A1BFF;
   --yaku-color--primary--contrast: #FFFFFF;
   --yaku-color--secondary: #FFF56E;
   --yaku-color--tiertiary: #00FFFF;
@@ -28,10 +28,8 @@
 }
 
 html, body {
-  display: flex;
-  flex-direction: column;
-  flex: 1 1 auto;
   width: 100%;
+  height: 100%;
   min-height: 100%;
 }
 
@@ -41,34 +39,25 @@ body {
   font-weight: 400;
   background: var(--yaku-color--background);
   color: var(--yaku-color--text);
-
-  router-outlet + * {
-    position: relative;
-    display: flex;
-    flex: 1 1 auto;
-    width: 100%;
-  }
 }
 
 .page {
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
   display: flex;
+  gap: 8px;
 
   &-decoration {
     flex: 1;
-    overflow: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
+    overflow: hidden;
+    border-radius: 8px;
   }
 
   &-content {
     position: relative;
+    border-radius: 8px;
     background: var(--yaku-color--background-elevated);
     width: 100%;
-    max-width: 540px;
+    max-width: 460px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -86,6 +75,7 @@ body {
     &-loader {
       position: absolute;
       inset: 0;
+      border-radius: 8px;
       background: var(--yaku-color--background-surface);
       padding: 24px;
       display: flex;
@@ -266,17 +256,5 @@ ul {
     &-hint {
       color: #D8A3FF;
     }
-  }
-}
-
-@media print {
-  body {
-    visibility: hidden;
-  }
-
-  app-poster-preview {
-    visibility: visible;
-    position: absolute;
-    inset: 0;
   }
 }

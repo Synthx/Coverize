@@ -4,14 +4,11 @@
       {{ 'poster.title' | translate }}
     </div>
     <div class="album-preview">
-      <app-checkbox [formControl]="removeExtraControl">
-        {{ 'poster.control.removeExtra' | translate }}
-      </app-checkbox>
-      <app-theme-selector [image]="poster()?.image" (colorsChanged)="handleColorsChanged($event)" />
+      <app-theme-selector />
       <div class="album-preview-actions">
         <button app-button type="submit" (click)="print()">
           {{ 'common.action.download' | translate }}
-          <app-icon name="download" />
+          <app-icon name="download"/>
         </button>
         <a class="link" routerLink="/albums">
           {{ 'common.action.goBack' | translate }}
@@ -20,13 +17,13 @@
     </div>
     @if (loading()) {
       <div class="page-content-loader">
-        <app-spinner />
+        <app-spinner/>
       </div>
     }
   </div>
   <div class="page-decoration">
-    @if (poster(); as poster) {
-      <app-poster-preview [poster]="poster" [colors]="colors()" [removeExtra]="removeExtra()" />
+    @if (preview(); as preview) {
+      <object type="application/pdf" width="100%" height="100%" [data]="preview">Poster preview</object>
     }
   </div>
 </div>

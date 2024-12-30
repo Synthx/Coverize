@@ -1,0 +1,25 @@
+<div class="layout">
+  <nav class="layout-navigation">
+    <div class="layout-navigation-menu">
+      <a class="layout-navigation-menu-item spotify" [href]="environment.externalUrl.spotify" target="_blank">
+        <app-icon name="spotify" />
+      </a>
+    </div>
+    <div class="layout-navigation-menu scrollable">
+      <a class="layout-navigation-menu-item" routerLink="/">
+        <app-icon name="home" />
+      </a>
+      <a class="layout-navigation-menu-item" routerLink="/albums" routerLinkActive="active">
+        <app-icon name="disc" />
+      </a>
+    </div>
+    <div class="layout-navigation-menu">
+      <a class="layout-navigation-menu-item" [href]="environment.externalUrl.github" target="_blank">
+        <app-icon name="github" />
+      </a>
+    </div>
+  </nav>
+  <div class="layout-content">
+    <router-outlet />
+  </div>
+</div>

@@ -1,0 +1,70 @@
+@use "hover";
+@use "layout";
+
+.layout {
+  height: 100%;
+  max-width: layout.$desktop-max-width;
+  margin: 0 auto;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+
+  &-navigation {
+    height: 100%;
+    width: 72px;
+    background: var(--yaku-color--background-elevated);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+
+    &-menu {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      padding: 12px 0;
+
+      &.scrollable {
+        flex: 1;
+        overflow-y: auto;
+      }
+
+      &-item {
+        appearance: none;
+        height: 64px;
+        width: 64px;
+        border: none;
+        border-radius: 8px;
+        background: transparent;
+        color: var(--yaku-color--text);
+        padding: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &.spotify {
+          color: #2ebd59;
+        }
+
+        &.active {
+          color: var(--yaku-color--primary);
+        }
+
+        @include hover.default {
+          background: var(--yaku-color--background-elevated-highlight);
+          color: var(--yaku-color--title);
+        }
+
+        app-icon {
+          height: 44px;
+          width: 44px;
+        }
+      }
+    }
+  }
+
+  &-content {
+    flex: 1;
+    min-width: 0;
+  }
+}

@@ -1,5 +1,6 @@
 import type { Routes } from '@angular/router';
 import { authGuard } from './guard/auth.guard';
+import { LayoutComponent } from './component/layout/layout.component';
 
 export const appRoutes: Routes = [
 	{
@@ -9,6 +10,7 @@ export const appRoutes: Routes = [
 	{
 		path: '',
 		canActivate: [authGuard],
+		component: LayoutComponent,
 		children: [
 			{
 				path: 'albums',

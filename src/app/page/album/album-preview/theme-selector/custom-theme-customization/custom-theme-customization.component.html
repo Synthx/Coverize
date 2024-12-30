@@ -14,7 +14,7 @@
   <app-form-field>
     {{ 'poster.control.customization.textColorTheme' | translate }}
     <select app-form-field-input formControlName="textColorTheme">
-      @for (theme of predefinedThemes; track $index) {
+      @for (theme of predefinedThemes; track theme) {
         <option [value]="theme">
           {{ 'poster.theme.' + theme | translate }}
         </option>

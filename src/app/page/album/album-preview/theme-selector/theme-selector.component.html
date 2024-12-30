@@ -10,6 +10,6 @@
     </select>
   </app-form-field>
   @if (theme() === 'custom') {
-    <app-custom-theme-customization [image]="image()" (colorsChanged)="handleCustomColorsChanged($event)" />
+    <app-custom-theme-customization />
   }
 </div>

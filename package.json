@@ -1,6 +1,6 @@
 {
 	"name": "poster-generator",
-	"version": "0.9.0",
+	"version": "1.0.0",
 	"scripts": {
 		"ng": "ng",
 		"start": "ng serve",
@@ -26,10 +26,10 @@
 		"@ngx-translate/http-loader": "^16.0.1",
 		"@spotify/web-api-ts-sdk": "^1.2.0",
 		"extract-colors": "^4.1.1",
+		"jspdf": "^2.5.2",
 		"rxjs": "~7.8.0",
 		"swiper": "^11.1.15",
-		"tslib": "^2.3.0",
-		"zone.js": "~0.15.0"
+		"tslib": "^2.3.0"
 	},
 	"devDependencies": {
 		"@angular/build": "^19.0.6",
@@ -41,6 +41,6 @@
 		"eslint": "^9.16.0",
 		"postcss": "^8.4.49",
 		"typescript": "~5.5.2",
-		"typescript-eslint": "^8.18.2"
+		"typescript-eslint": "^8.19.0"
 	}
 }
